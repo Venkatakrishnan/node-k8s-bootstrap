@@ -1,0 +1,22 @@
+profile: common
+namespaces:
+- watchmen:
+  charts:
+  - name: kube2iam
+    version: 0.2.1
+    valuesFile: values/kube2iam.yaml
+    repo: https://kubernetes-charts.storage.googleapis.com/
+  - name: external-dns
+    version: 0.1.1
+    valuesFile: values/dns.yaml
+    repo: https://kubernetes-charts.storage.googleapis.com/
+  - name: my-operator
+    version: 0.0.1
+    valuesFile: values/operator.yaml
+    repo: https://helm.watchmen.com/
+- logging: # Dependencies must be managed via Helm and Kubernetes Primitives
+  charts:
+  - name: elk # Here the elk chart is really an umbrella chart that specifies Kibana, Elasticsearch and Fluentd charts as its dependencies.
+    version: 1.0.0
+    valuesFile: values/elk.yaml
+    repo: https://helm.watchmen.com/

@@ -1,0 +1,57 @@
+{
+  "name": "helm-installer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "repository": "@watchmen/helm-installer",
+  "scripts": {
+    "ava": "cross-env NODE_ENV=auto DEBUG=test:*,app:*,dbg:* ava",
+    "pretest": "xo",
+    "test": "npm run ava",
+    "prebuild": "npm run test",
+    "build": "babel ./src -d ./dist",
+    "start": "cross-env DEBUG=dbg:* babel-node src"
+  },
+  "author": "tony kerz",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/node": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@watchmen/debug": "^1.0.2",
+    "@watchmen/helpr": "^2.3.5",
+    "config": "^2.0.1",
+    "debug": "^3.1.0",
+    "eslint": "^5.5.0",
+    "js-yaml": "^3.12.0",
+    "lodash": ">=4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@watchmen/test-helpr": "^0.3.2",
+    "ava": "^0.25.0",
+    "babel-eslint": "^9.0.0",
+    "cross-env": "^5.1.1",
+    "xo": "^0.23.0"
+  },
+  "ava": {
+    "require": [
+      "@babel/register",
+      "@babel/polyfill"
+    ]
+  },
+  "xo": {
+    "prettier": true,
+    "space": 2,
+    "rules": {
+      "capitalized-comments": 0,
+      "no-unused-expressions": 0,
+      "new-cap": 0
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
