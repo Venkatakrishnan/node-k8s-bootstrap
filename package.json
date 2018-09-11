@@ -1,9 +1,9 @@
 {
-  "name": "helm-installer",
+  "name": "k8s-bootstrap",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
-  "repository": "@watchmen/helm-installer",
+  "repository": "@watchmen/node-k8s-bootstrap",
   "scripts": {
     "ava": "cross-env NODE_ENV=auto DEBUG=test:*,app:*,dbg:* ava",
     "pretest": "xo",
@@ -20,6 +20,7 @@
     "@babel/register": "^7.0.0",
     "@watchmen/debug": "^1.0.2",
     "@watchmen/helpr": "^2.3.5",
+    "args": "^5.0.0",
     "config": "^2.0.1",
     "debug": "^3.1.0",
     "eslint": "^5.5.0",
@@ -48,7 +49,8 @@
     "rules": {
       "capitalized-comments": 0,
       "no-unused-expressions": 0,
-      "new-cap": 0
+      "new-cap": 0,
+      "prefer-rest-params": 0
     }
   },
   "publishConfig": {

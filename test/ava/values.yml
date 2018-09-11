@@ -1,22 +1,36 @@
 profile: common
+# can specify repo at any level, or will naturally default to below
+# repo: https://kubernetes-charts.storage.googleapis.com
 namespaces:
-- watchmen:
-  charts:
-  - name: kube2iam
-    version: 0.2.1
-    valuesFile: values/kube2iam.yaml
-    repo: https://kubernetes-charts.storage.googleapis.com/
-  - name: external-dns
-    version: 0.1.1
-    valuesFile: values/dns.yaml
-    repo: https://kubernetes-charts.storage.googleapis.com/
-  - name: my-operator
-    version: 0.0.1
-    valuesFile: values/operator.yaml
-    repo: https://helm.watchmen.com/
-- logging: # Dependencies must be managed via Helm and Kubernetes Primitives
-  charts:
-  - name: elk # Here the elk chart is really an umbrella chart that specifies Kibana, Elasticsearch and Fluentd charts as its dependencies.
-    version: 1.0.0
-    valuesFile: values/elk.yaml
-    repo: https://helm.watchmen.com/
+  - name: watchmen
+    specs:
+      - repo: git@github.com:tony-kerz/k8s-spec-scratch
+        files:
+          - jenkins-casc-config.yml
+    charts:
+      # - name: stable/nginx-ingress
+      #   values:
+      #     fromChart: true
+      #     # defaults to values.yaml when fromChart
+      #     # file: values.yaml
+      - name: stable/jenkins
+        values:
+          useDefaults: true
+          # using file in conjunction with fromChart will use additional -f arg
+          repo: git@github.com:tony-kerz/k8s-spec-scratch
+          file: jenkins-helm.yml
+          setArgs:
+            - key: Master.ImageTag
+              value: 2.141
+            - key: Master.AdminPassword
+              env: JENKINS_ADMIN_PASSWORD
+            - key: rbac.install
+              # unspecified value defaults to true
+              # value: true
+            # - key: Persistence.ExistingClaim
+            #   value: pvc-name
+      # - name: stable/mongodb
+      #   values:
+      #     repo: git@git.aetna.com:digital-cloud/hc-helm-mongo-scratch
+      #     # defaults to values.yml when repo provided
+      #     # file: values.yml

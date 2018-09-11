@@ -1,11 +1,11 @@
-# node-helm-installer
+# node-k8s-bootstrap
 
-miscellaneous helper functions
+bootstrap k8s clusters with multiple mechanisms such as specs and helm charts
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Build Status](https://travis-ci.org/the-watchmen/node-helpr.svg?branch=master)](https://travis-ci.org/the-watchmen/node-helm-installer)
-[![npm (scoped)](https://img.shields.io/npm/v/@watchmen/helpr.svg)](https://img.shields.io/npm/v/@watchmen/helm-installer.svg)
+[![Build Status](https://travis-ci.org/the-watchmen/node-k8s-bootstrap.svg?branch=master)](https://travis-ci.org/the-watchmen/node-k8s-bootstrap)
+[![npm (scoped)](https://img.shields.io/npm/v/@watchmen/k8s-bootstrap.svg)](https://img.shields.io/npm/v/@watchmen/k8s-bootstrap.svg)
 
 > see [tests](test) for examples
 
